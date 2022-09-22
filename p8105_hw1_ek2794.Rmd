@@ -32,11 +32,37 @@ ggsave("p8105_hw1_ek2794.pdf", height = 5, width=5)
 
 
 ## Problem 2 Vectors
+```{r}
+
+df = tibble(
+  var_norm = rnorm(n = 10, mean = 5, sd = 1),
+  vec_logic = var_norm > 0,
+  vec_char = c("a", "b", "c", "d", "e", "f", "g", "h", "i","j"),
+  vec_factor = factor (c("low", "low", "low", "medium", "medium", "medium", "high", "high", "high", "high")))
+  
+
+```
+
+The mean of the random sample is `r mean(pull(df,var_norm), na.rm = TRUE)`
+
+The mean of the logical vector is `r mean(pull(df, vec_logic), na.rm = TRUE)`
+
+The mean of the character vector is `r mean(pull(df, vec_char), na.rm = TRUE)`
+
+The mean of the factor vector is `r mean(pull(df, vec_factor), na.rm = TRUE)`
 
 
+```
 
 
+as.numeric(pull(df, vec_logic)),
 
+as.numeric(pull(df,factor_vector))
+```
+
+```
+
+```
 
 
 ## R Markdown
