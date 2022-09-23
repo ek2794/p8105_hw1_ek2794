@@ -31,7 +31,7 @@ Here we make a scatterplot of bill length and flipper length with points colored
 ggplot(penguins, aes(x=bill_length_mm, y=flipper_length_mm, color=species)) + geom_point()
 ```
 
-We are saving the scatterplot into a pdf. 
+Now we save the scatterplot into a pdf. 
 
 ```{r}
 ggsave("p8105_hw1_ek2794.pdf", height = 5, width=5)
@@ -41,6 +41,17 @@ ggsave("p8105_hw1_ek2794.pdf", height = 5, width=5)
 
 
 ## Problem 2 Vectors
+
+Here we make a dataframe with the following properties. 
+
+A random sample of size 10 from a standard Normal distribution
+
+A logical vector indicating whether elements of the sample are greater than 0.
+
+A character vector of length 10.
+
+A factor vector of length 10, with 3 different factor “levels”.
+
 ```{r}
 
 df = tibble(
@@ -54,15 +65,30 @@ df = tibble(
 
 The mean of the random sample is `r mean(pull(df,var_norm), na.rm = TRUE)`
 
-The mean of the logical vector is `r mean(pull(df, vec_logic), na.rm = TRUE)`
+The mean of the logical vector is `r mean(pull(df, vec_logic), na.rm = TRUE)` where `TRUE` is coerced to be a numeric value of 1 and `FALSE` is coerced to be a numeric value of 0.
 
-The mean of the character vector is `r mean(pull(df, vec_char), na.rm = TRUE)`
+The mean of the character vector `r mean(pull(df, vec_char), na.rm = TRUE)` does not work. 
 
-The mean of the factor vector is `r mean(pull(df, vec_factor), na.rm = TRUE)`
+The mean of the factor vector `r mean(pull(df, vec_factor), na.rm = TRUE)` does not work. 
 
 
+Here we convert the logical, character, and factor vectors with `as.numeric`.
+
+
+```{r, eval=FALSE}
+as.numeric(pull(df,vec_logic))
+as.numeric(pull(df, vec_char))
+as.numeric(pull(df, vec_factor))
 
 ```
+Here we will make a new variable for the converted vec_factor into numeric form. In this case, the levels are assigned alphabetically rather than by the meaning of low, medium, and high. 
+
+```{r}
+vec_factor_new = as.numeric(pull(df,vec_factor))
+mean(vec_factor_new)
+
+```
+
 
 
 ## R Markdown
