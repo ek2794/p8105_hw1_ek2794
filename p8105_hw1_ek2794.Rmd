@@ -1,29 +1,38 @@
 ---
 title: "p8105_hw1_ek2794"
+author: "Elise Kang UNI ek2794"
 output: github_document
 date: "2022-09-21"
 
 ##Problem 1 Penguins
 
-
+We are loading the penguins dataset and showing a summary of the data.
 ```{r install}
 library(tidyverse)
 data("penguins", package =  "palmerpenguins")
 head(penguins)
-
+summary(penguins)
 ```
-The mean of flipper length is `r mean(pull(penguins,flipper_length_mm), na.rm = TRUE)`
 
-The mean of bill length is `r mean(pull(penguins,bill_length_mm), na.rm = TRUE)`
+There are 3 species of penguins from 3 different islands. There are a total of 8 variables in the dataset including species, island, bill_length_mm, bill_depth_mm, flipper_length_mm, body_mass_g, sex, and year. 
 
-The mean of bill depth is `r mean(pull(penguins,bill_length_mm), na.rm = TRUE)`
+The mean flipper length is `r mean(pull(penguins,flipper_length_mm), na.rm = TRUE)`
 
-The mean of body mass is `r mean(pull(penguins,body_mass_g), na.rm = TRUE)`
+The mean bill length is `r mean(pull(penguins,bill_length_mm), na.rm = TRUE)`
 
+The mean bill depth is `r mean(pull(penguins,bill_length_mm), na.rm = TRUE)`
+
+The mean body mass is `r mean(pull(penguins,body_mass_g), na.rm = TRUE)`
+
+
+Here we make a scatterplot of bill length and flipper length with points colored by species. 
 
 ```{r}
 ggplot(penguins, aes(x=bill_length_mm, y=flipper_length_mm, color=species)) + geom_point()
 ```
+
+We are saving the scatterplot into a pdf. 
+
 ```{r}
 ggsave("p8105_hw1_ek2794.pdf", height = 5, width=5)
 ```
@@ -52,15 +61,6 @@ The mean of the character vector is `r mean(pull(df, vec_char), na.rm = TRUE)`
 The mean of the factor vector is `r mean(pull(df, vec_factor), na.rm = TRUE)`
 
 
-```
-
-
-as.numeric(pull(df, vec_logic)),
-
-as.numeric(pull(df,factor_vector))
-```
-
-```
 
 ```
 
